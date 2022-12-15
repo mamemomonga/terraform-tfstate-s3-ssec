@@ -1,0 +1,6 @@
+locals {
+  # tfstateのS3 Bucket名を設定してください
+  tfstate_bucket = "state-s3-sse-c-bucket-012345678-fixme-fixme.aws"
+  # tfstateのS3 Key(パス)を設定してください
+  tfstate_s3key = "tfstate/sse-c-tfstate.tfstate"
+}
