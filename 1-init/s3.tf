@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "tfstate" {
-  # 任意のバケット名を設定する
-  bucket = "state-s3-sse-c-test-221215.aws"
+  bucket = local.tfstate_bucket
 }
 
 resource "aws_s3_bucket_acl" "tfstate" {
