@@ -64,7 +64,7 @@ backend.tf を手作業で設定する場合は以下の項目を追加します
     terraform {
       backend "s3" {
         encrypt          = true
-        profile          = "myprofile" // AWSCLIプロファイルを使用する場合
+        profile          = "myprofile" // AWSCLIプロファイルを明示する場合
         bucket           = "バケット名"
         sse_customer_key = "Base64されたSSE-Cキー"
         region           = "リージョン"
