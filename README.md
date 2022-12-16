@@ -48,13 +48,28 @@ SSE-Cを利用したtfstateの具体的な利用方法です。バックエン�
 
 ポイントとしては、backendで設定する sse_customer_key はbase64でエンコードしたものである必要があります。また、エンコード前のデータはちょうど256ビット(32バイト)である必要があります。
 
+AWSCLIプロファイルを明示する場合、backend.tfの backend "s3" に profile を追記してください。
+
     $ cd 3-sse-c-tfstate
     $ make
+    $ vim backend.tf
     $ terraform init
     $ terraform plan
     $ terraform apply
     $ more var/hello.txt
     $ cd ..
+
+backend.tf を手作業で設定する場合は以下の項目を追加します。
+
+    terraform {
+      backend "s3" {
+        encrypt          = true
+        profile          = "myprofile" // AWSCLIプロファイルを使用する場合
+        bucket           = "バケット名"
+        sse_customer_key = "Base64されたSSE-Cキー"
+        region           = "リージョン"
+        key              = "tfstateのキー(S3上のパス)"
+      }
 
 ## 4-fetch-tfstate
 

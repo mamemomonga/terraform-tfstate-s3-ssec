@@ -24,6 +24,7 @@ resource "local_file" "backend" {
 terraform {
   backend "s3" {
     encrypt          = true
+    // profile = "myprofile" // プロファイルを使用する場合
     bucket           = "${aws_s3_bucket.tfstate.bucket}"
     sse_customer_key = "${base64encode(random_string.ssec-key.id)}"
     region           = "ap-northeast-1"
